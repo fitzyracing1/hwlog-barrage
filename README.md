@@ -1,2 +1,5 @@
 # hwlog-barrage
-Barrage plain-language clone of fitzyracing1/hwlog
+
+Barrage clone of [fitzyracing1/hwlog](https://github.com/fitzyracing1/hwlog).
+
+Read [listing.barrage](listing.barrage).

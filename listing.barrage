@@ -1,0 +1,48 @@
+# hwlog
+
+> A custom hardware log file type that only adds new ENTRY blocks and never rewrites old ones.
+
+## Purpose
+Explain the .hwlog format so a non-programmer can see it is an append-only notebook for prototypes. Source: fitzyracing1/hwlog.
+
+## How it works (plain English)
+1. Open a .hwlog file.
+2. Add a new ENTRY block at the end.
+3. Leave every older block untouched.
+4. A checker can confirm the blocks are well formed.
+
+## Key ideas
+- Append-only (new lines go at the end)
+- ENTRY block (one stamped note about the hardware)
+- Custom file type (a named format, not a secret language)
+
+## The actual code
+```
+# source: fitzyracing1/hwlog
+# format idea
+ENTRY
+  when: <stamp>
+  part: <name>
+  note: <what changed>
+END
+```
+
+## Line-by-line translation
+1. ENTRY → “start one hardware note”
+2. when → “when this note was written”
+3. part → “which piece of hardware”
+4. note → “what happened to it”
+5. END → “close the block so the next note can start”
+
+## Decisions the program makes
+- If a write would change an old block → refuse and append instead
+- If a block is missing END → the file is not valid
+
+## What a person would notice
+The log grows. Old notes stay put.
+
+## Current status
+Barrage clone of the custom file-type repo.
+
+## Next possible steps
+Add one ENTRY in a real .hwlog file in the source repo.
